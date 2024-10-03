@@ -64,4 +64,47 @@ export class EmployeeApiService implements EmployeeService {
       return null;
     }
   }
+
+  async getEmployeeById(id: string): Promise<Employee | null> {
+    try {
+      const response = await fetch(`${this.basePath}/employee/${id}`);
+
+      if (!response.ok) {
+        throw `HTTP error! status: ${response.status}`;
+      }
+
+      const result = await response.json();
+
+      return camelCase(result, 2) as Employee;
+    } catch (error) {
+      console.error(`[EmployeeApiService] [getEmployeeById] ${error}`);
+      return null;
+    }
+  }
+
+  async updateEmployee(
+    id: string,
+    employee: Partial<Employee>
+  ): Promise<Employee | null> {
+    try {
+      const response = await fetch(`${this.basePath}/employee/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(snakeCase(employee))
+      });
+
+      if (!response.ok) {
+        throw `HTTP error! status: ${response.status}`;
+      }
+
+      const result = await response.json();
+
+      return camelCase(result, 2) as Employee;
+    } catch (error) {
+      console.error(`[EmployeeApiService] [updateEmployee] ${error}`);
+      return null;
+    }
+  }
 }

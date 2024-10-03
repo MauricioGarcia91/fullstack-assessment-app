@@ -5,7 +5,7 @@ import { EmployeeUseCases } from '../use-cases';
 import { Validator } from '@/utils/validator';
 import { employeeSchema } from './schema';
 
-import { EmployeeForm } from '../domain/definitions.d';
+import { Employee, EmployeeForm } from '../domain/definitions.d';
 
 export class EmployeeController {
   private employeeUseCases: EmployeeUseCases;
@@ -43,10 +43,26 @@ export class EmployeeController {
       data as unknown as EmployeeForm
     );
 
-    if (data) {
+    if (employee) {
       revalidatePath('/employee');
     }
 
     return { data: employee };
+  };
+
+  getEmployeeById = async (id: string) =>
+    await this.employeeUseCases.getEmployeeById(id);
+
+  updateEmployee = async (id: string, employee: Partial<Employee>) => {
+    const employeeUpdated = await this.employeeUseCases.updateEmployee(
+      id,
+      employee
+    );
+
+    if (employeeUpdated) {
+      revalidatePath(`'/employee/${id}`);
+    }
+
+    return employeeUpdated;
   };
 }

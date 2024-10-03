@@ -1,7 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
+
+import { EmployeeAvatar } from '../EmployeeAvatar/EmployeeAvatar';
+import { FieldInfo } from '../FieldInfo';
 
 import { deleteEmployee } from '@/modules/employee/adapters/actions';
 import { formatDate, formatDateDistanceToNow } from '@/utils/date';
@@ -22,25 +24,21 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
 
   return (
     <div className={styles.card}>
-      <Image
-        src={`https://ui-avatars.com/api/?name=${employee.firstName}+${employee.lastName}&background=0070f3&color=ffffff&size=128&rounded=true&bold=true`}
-        alt='Profile image'
-        width='64'
-        height='64'
-        className={styles.avatar}
+      <EmployeeAvatar
+        firstName={employee.firstName}
+        lastName={employee.lastName}
       />
       <div className={styles['card-info']}>
-        <p>
-          <strong>{`${employee.firstName} ${employee.lastName}`}</strong>
-          {' - '}({employee.department?.name ?? 'N|A'})
-        </p>
-        <p>
-          <b>Hire Date</b>
-        </p>
-        <p>
-          {formatDate(employee.hireDate)}{' '}
-          {`(${formatDateDistanceToNow(employee.hireDate)})`}
-        </p>
+        <FieldInfo
+          primaryText={`${employee.firstName} ${employee.lastName}`}
+          secondaryText={` - ${employee.department?.name ?? 'N|A'}`}
+        />
+        <FieldInfo primaryText={'Hire Date'} />
+        <FieldInfo
+          secondaryText={`${formatDate(
+            employee.hireDate
+          )} (${formatDateDistanceToNow(employee.hireDate)})`}
+        />
       </div>
       <div className={styles['card-actions']}>
         <Link

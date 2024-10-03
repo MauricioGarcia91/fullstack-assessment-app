@@ -7,10 +7,13 @@ import styles from './EmployeeList.module.css';
 export async function EmployeeList() {
   const employees = await getAllEmployees();
 
+  if (!employees) {
+    return <p>Employees not found</p>;
+  }
+
   return (
     <div className={styles.container}>
-      {!employees && <p>Employees no found</p>}
-      {employees?.map((employee) => (
+      {employees.map((employee) => (
         <EmployeeCard
           key={employee.id}
           employee={employee}

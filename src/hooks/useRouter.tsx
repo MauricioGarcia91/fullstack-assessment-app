@@ -2,10 +2,12 @@
 import {
   usePathname,
   useRouter as useRouterNextNavigation,
-  useSearchParams
+  useSearchParams,
+  useParams
 } from 'next/navigation';
 
 export function useRouter() {
+  const { id } = useParams();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouterNextNavigation();
@@ -23,5 +25,5 @@ export function useRouter() {
 
     replace(`${pathname}?${params.toString()}`);
   };
-  return { getSearchParams, updateSearchParams };
+  return { id, getSearchParams, updateSearchParams };
 }

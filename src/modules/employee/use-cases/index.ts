@@ -1,5 +1,6 @@
 import { EmployeeService } from '../domain/service';
-import { EmployeeForm } from '../domain/definitions';
+
+import { Employee, EmployeeForm } from '../domain/definitions.d';
 
 export class EmployeeUseCases {
   private employeeApiService: EmployeeService;
@@ -18,4 +19,10 @@ export class EmployeeUseCases {
 
   createEmployee = async (employee: EmployeeForm) =>
     await this.employeeApiService.createEmployee(employee);
+
+  getEmployeeById = async (id: string) =>
+    await this.employeeApiService.getEmployeeById(id);
+
+  updateEmployee = async (id: string, employee: Partial<Employee>) =>
+    await this.employeeApiService.updateEmployee(id, employee);
 }

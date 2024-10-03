@@ -9,6 +9,7 @@ export interface Employee {
   phone: string;
   address: string;
   createdAt: string;
+  isActive: boolean;
 }
 
 export interface EmployeeForm {
@@ -18,4 +19,5 @@ export interface EmployeeForm {
   departmentId: string;
   phone: string;
   address: string;
+  isActive?: boolean;
 }

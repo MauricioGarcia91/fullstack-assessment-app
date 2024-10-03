@@ -1,11 +1,13 @@
 'use client';
 
 import { useEmployeeForm } from '@/hooks/useEmployeeForm';
+import { useDepartment } from '@/hooks/useDepartment';
 
 import styles from './EmployeeForm.module.css';
 
 export function EmployeeForm() {
-  const { departments, handleOnClose, handleOnSubmit } = useEmployeeForm();
+  const { handleOnClose, handleOnSubmit } = useEmployeeForm();
+  const { departments } = useDepartment();
 
   return (
     <div>
@@ -18,6 +20,7 @@ export function EmployeeForm() {
         open>
         <h1>Create Employee</h1>
         <form
+          lang='en'
           className={styles.form}
           action={handleOnSubmit}>
           <label htmlFor='firstName'>Firs Name:</label>

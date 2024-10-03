@@ -47,7 +47,6 @@ a {
   cursor: pointer;
   color: var(--foreground);
   border: none;
-  width: 100%;
 }
 
 .button.primary {
@@ -76,6 +75,18 @@ a {
 
 button.secondary:hover {
   background-color: #75a0d1;
+}
+
+.button.green {
+  background-color: #2fd373;
+}
+
+.button.green:hover {
+  background-color: #25a45a;
+}
+
+.not-allowed {
+  cursor: not-allowed;
 }
 
 input,
