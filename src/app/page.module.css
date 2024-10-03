@@ -6,10 +6,10 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
@@ -31,36 +31,11 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  grid-row-start: 2;
 }
 
 .footer {
-  grid-row-start: 3;
   display: flex;
   gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.buttonLink {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #0070f3;
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.buttonLink:hover {
-  background-color: #0051bb;
 }
 
 @media (max-width: 600px) {

@@ -35,6 +35,55 @@ a {
   text-decoration: none;
 }
 
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  color: var(--foreground);
+  border: none;
+  width: 100%;
+}
+
+.button.primary {
+  background-color: #1565c0;
+}
+
+.button.secondary {
+  background-color: #5c7ea4;
+}
+
+.button.delete {
+  background-color: #d32f2f;
+}
+
+.button:hover {
+  color: var(--foreground);
+}
+
+.button.primary:hover {
+  background-color: #5e92f3;
+}
+
+.button.delete:hover {
+  background-color: #e57373;
+}
+
+button.secondary:hover {
+  background-color: #75a0d1;
+}
+
+input,
+select {
+  padding: 5px;
+  border-radius: 8px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: light;

@@ -8,7 +8,7 @@ export default function Home() {
         <h1>Welcome to FullStack Assessment</h1>
         <Link
           href='/employee'
-          className={styles.buttonLink}>
+          className='button primary'>
           Go to employee
         </Link>
       </main>
