@@ -1,11 +1,11 @@
-import { Department } from '@/modules/department/domain/definitions.d';
+import { EmployeeDepartment } from '@/modules/employee-department/domain/definitions.d';
 
 export interface Employee {
   id: string;
   firstName: string;
   lastName: string;
   hireDate: string;
-  department: Department;
+  departments: EmployeeDepartment[];
   phone: string;
   address: string;
   createdAt: string;

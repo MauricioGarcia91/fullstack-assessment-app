@@ -16,7 +16,7 @@ export class EmployeeApiService implements EmployeeService {
 
       const result = await response.json();
 
-      return camelCase(result, 2) as Employee[];
+      return camelCase(result, 4) as Employee[];
     } catch (error) {
       console.error(`[EmployeeApiService] [getAllEmployees] ${error}`);
       return null;
@@ -35,7 +35,7 @@ export class EmployeeApiService implements EmployeeService {
 
       const result = await response.json();
 
-      return camelCase(result, 2) as Employee;
+      return camelCase(result, 4) as Employee;
     } catch (error) {
       console.error(`[EmployeeApiService] [deleteEmployee] ${error}`);
       return null;
@@ -58,7 +58,7 @@ export class EmployeeApiService implements EmployeeService {
 
       const result = await response.json();
 
-      return camelCase(result, 2) as Employee;
+      return camelCase(result, 4) as Employee;
     } catch (error) {
       console.error(`[EmployeeApiService] [createEmployee] ${error}`);
       return null;
@@ -75,7 +75,7 @@ export class EmployeeApiService implements EmployeeService {
 
       const result = await response.json();
 
-      return camelCase(result, 2) as Employee;
+      return camelCase(result, 4) as Employee;
     } catch (error) {
       console.error(`[EmployeeApiService] [getEmployeeById] ${error}`);
       return null;
@@ -101,7 +101,7 @@ export class EmployeeApiService implements EmployeeService {
 
       const result = await response.json();
 
-      return camelCase(result, 2) as Employee;
+      return camelCase(result, 4) as Employee;
     } catch (error) {
       console.error(`[EmployeeApiService] [updateEmployee] ${error}`);
       return null;

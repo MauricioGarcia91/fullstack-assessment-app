@@ -8,8 +8,10 @@ import { FieldInfo } from '../FieldInfo';
 
 import { formatDate, formatDateDistanceToNow } from '@/utils/date';
 
-import styles from './EmployeeDetail.module.css';
 import { DepartmentSelector } from '../DepartmentSelector/DepartmentSelector';
+import { EmployeeDepartmentChangelog } from '../EmployeeDepartmentChangelog/EmployeeDepartmentChangelog';
+
+import styles from './EmployeeDetail.module.css';
 
 export async function EmployeeDetail({ id }: { id: string }) {
   const employee = await getEmployeeById(id);
@@ -26,6 +28,9 @@ export async function EmployeeDetail({ id }: { id: string }) {
   };
 
   const isActive = employee.isActive;
+  const employeeDepartmentSorted = employee.departments.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 
   return (
     <div className={styles.container}>
@@ -48,7 +53,7 @@ export async function EmployeeDetail({ id }: { id: string }) {
           />
           <FieldInfo
             primaryText={`Department: `}
-            secondaryText={`${employee.department.name}`}
+            secondaryText={`${employeeDepartmentSorted[0].department.name}`}
           />
           <FieldInfo
             primaryText={`Hire Date: `}
@@ -74,7 +79,12 @@ export async function EmployeeDetail({ id }: { id: string }) {
           </button>
         </form>
       </div>
-      <DepartmentSelector defaultValue={employee.department} />
+      <DepartmentSelector
+        defaultValue={employeeDepartmentSorted[0].department}
+      />
+      <EmployeeDepartmentChangelog
+        employeeDepartmentChangelog={employeeDepartmentSorted}
+      />
     </div>
   );
 }

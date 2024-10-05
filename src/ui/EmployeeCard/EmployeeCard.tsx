@@ -22,6 +22,10 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
     }
   };
 
+  const employeeDepartmentSorted = employee.departments.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
   return (
     <div className={styles.card}>
       <EmployeeAvatar
@@ -31,7 +35,9 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
       <div className={styles['card-info']}>
         <FieldInfo
           primaryText={`${employee.firstName} ${employee.lastName}`}
-          secondaryText={` - ${employee.department?.name ?? 'N|A'}`}
+          secondaryText={` - ${
+            employeeDepartmentSorted[0]?.department.name ?? 'N|A'
+          }`}
         />
         <FieldInfo primaryText={'Hire Date'} />
         <FieldInfo
