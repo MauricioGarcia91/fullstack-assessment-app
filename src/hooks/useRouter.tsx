@@ -25,5 +25,6 @@ export function useRouter() {
 
     replace(`${pathname}?${params.toString()}`);
   };
+
   return { id, getSearchParams, updateSearchParams };
 }

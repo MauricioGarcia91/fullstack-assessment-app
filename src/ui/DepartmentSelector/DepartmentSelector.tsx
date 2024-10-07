@@ -1,40 +1,25 @@
 'use client';
-import { useState } from 'react';
 
-import { useRouter } from '@/hooks/useRouter';
-import { useDepartment } from '@/hooks/useDepartment';
-import { updateEmployee } from '@/modules/employee/adapters/actions';
+import { useDepartmentSelector } from '@/hooks/useDepartmentSelector';
 
 import { Department } from '@/modules/department/domain/definitions.d';
 
 import styles from './DepartmentSelector.module.css';
 
 export function DepartmentSelector({
-  defaultValue
+  defaultDepartment
 }: {
-  defaultValue: Department;
+  defaultDepartment: Department;
 }) {
-  const [departmentSelected, setDepartmentSelected] = useState(defaultValue.id);
-  const { departments } = useDepartment();
-  const { id } = useRouter();
-
-  const onChangeDepartment = (evt: React.ChangeEvent<HTMLSelectElement>) => {
-    setDepartmentSelected(evt.target.value);
-  };
-
-  const handleUpdateDepartmentOnClick = async () => {
-    const employee = await updateEmployee(id as string, {
-      departmentId: departmentSelected
-    });
-
-    if (!employee) {
-      alert('Employee not updated');
-    } else {
-      alert('Employee updated!');
-    }
-  };
-
-  const updatingDisabled = defaultValue.id === departmentSelected;
+  const {
+    departmentSelected,
+    departments,
+    updatingDisabled,
+    onChangeDepartment,
+    handleUpdateDepartmentOnClick
+  } = useDepartmentSelector({
+    defaultDepartment
+  });
 
   return (
     <div className={styles.container}>

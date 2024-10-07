@@ -20,7 +20,7 @@ export class DepartmentApiService implements DepartmentService {
 
       return camelCase(result, 2) as Department[];
     } catch (error) {
-      console.error(`[DepartmentApiService] [getAllDeparment] ${error}`);
+      console.error(`[DepartmentApiService] [getAllDepartment] ${error}`);
       return null;
     }
   }

@@ -61,6 +61,7 @@ export class EmployeeController {
 
     if (employeeUpdated) {
       revalidatePath(`'/employee/${id}`);
+      revalidatePath('/employee');
     }
 
     return employeeUpdated;

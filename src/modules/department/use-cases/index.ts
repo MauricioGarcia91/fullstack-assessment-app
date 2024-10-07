@@ -7,9 +7,6 @@ export class DepartmentUseCases {
     this.departmentApiService = departmentApiService;
   }
 
-  getAllDepartment = async () => {
-    const departments = await this.departmentApiService.getAllDepartment();
-
-    return departments;
-  };
+  getAllDepartment = async () =>
+    await this.departmentApiService.getAllDepartment();
 }

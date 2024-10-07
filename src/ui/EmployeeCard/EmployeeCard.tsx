@@ -5,14 +5,18 @@ import Link from 'next/link';
 import { EmployeeAvatar } from '../EmployeeAvatar/EmployeeAvatar';
 import { FieldInfo } from '../FieldInfo';
 
-import { deleteEmployee } from '@/modules/employee/adapters/actions';
+import { useEmployee } from '@/hooks/useEmployee';
 import { formatDate, formatDateDistanceToNow } from '@/utils/date';
+
+import { deleteEmployee } from '@/modules/employee/adapters/actions';
 
 import { Employee } from '@/modules/employee/domain/definitions.d';
 
 import styles from './EmployeeCard.module.css';
 
 export function EmployeeCard({ employee }: { employee: Employee }) {
+  const { employeeDepartment } = useEmployee({ employee });
+
   const onClickDeleteHandler = async (id: string) => {
     const employee = await deleteEmployee(id);
     if (!employee) {
@@ -21,10 +25,6 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
       alert('Employee deleted');
     }
   };
-
-  const employeeDepartmentSorted = employee.departments.sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
 
   return (
     <div className={styles.card}>
@@ -36,7 +36,7 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
         <FieldInfo
           primaryText={`${employee.firstName} ${employee.lastName}`}
           secondaryText={` - ${
-            employeeDepartmentSorted[0]?.department.name ?? 'N|A'
+            employeeDepartment[0]?.department.name ?? 'N|A'
           }`}
         />
         <FieldInfo primaryText={'Hire Date'} />
