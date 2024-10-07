@@ -1,24 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fullstack Assessment APP
 
-## Getting Started
+## Description
 
-First, run the development server:
+`fullstack_assessment_app` is a project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This application allows to users managing employees.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**This applicacition is available for desktop devices now. Next version will be provide for small devices with responsive design.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Create an employee**
+- **Get a list of employees**
+- **View the employee's detail**
+- **Update the employee's detail or department**
+- **Delete the employee**
+
+## Prerequisites
+
+- [Node.js v20](https://nodejs.org/)
+
+## Technologies
+
+- Next.js 14
+
+## Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://git.number8.com/mauricio.garcia/fullstack.assessment.app.git
+   cd fullstack_assessment_app
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+### Check Port Usage
+
+By default, this application runs on port 3000 and is configured to connect to the `fullstack_assessment_api` on port 4001.
+
+1. To start the APP in development mode:
+
+   ```bash
+   npm run dev
+   ```
+
+   This will connect to battle `fullstack_assessment_api`. You must run battle `fullstack_assessment_api` before start this aplication
+
+## Architecture
+
+### The application follows Next.js standards for page and route definitions. The folder structure is as follows:
+
+- `app/`: Pages
+- `ui/`: User interface components
+- `hooks/`: Custom React hooks
+- `modules/`: It follows a hexagonal architecture composed of:
+  - **Domain**: The core of the application where the business logic and main entities are defined.
+  - **Adapters**: This layer handles the input and output of the application, including actions, api services, and validation schemas for inputs.
+  - **Use-Cases**: This layer defines the application logic that orchestrates the domain operations, using the entities and services defined in the domain.
 
 ## Learn More
 
@@ -26,11 +71,3 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
