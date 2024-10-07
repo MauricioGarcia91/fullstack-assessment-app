@@ -7,7 +7,7 @@ import styles from './EmployeeList.module.css';
 export async function EmployeeList() {
   const employees = await getAllEmployees();
 
-  if (!employees) {
+  if (!employees || employees.length === 0) {
     return <p>Employees not found</p>;
   }
 

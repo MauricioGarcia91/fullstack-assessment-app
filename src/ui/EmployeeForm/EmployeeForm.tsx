@@ -23,7 +23,7 @@ export function EmployeeForm() {
           lang='en'
           className={styles.form}
           action={handleOnSubmit}>
-          <label htmlFor='firstName'>Firs Name:</label>
+          <label htmlFor='firstName'>First Name:</label>
           <input
             type='text'
             name='firstName'

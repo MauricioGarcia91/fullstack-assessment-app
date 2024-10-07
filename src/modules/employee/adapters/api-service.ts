@@ -1,10 +1,11 @@
 import { camelCase, snakeCase } from 'change-case/keys';
+import { FULLSTACK_ASSESSMENT_API } from '@/config';
 import { EmployeeService } from '../domain/service';
 
 import { Employee, EmployeeForm } from '../domain/definitions.d';
 
 export class EmployeeApiService implements EmployeeService {
-  basePath: string = process.env.FULLSTACK_ASSESSMENT_API!;
+  basePath: string = FULLSTACK_ASSESSMENT_API;
 
   async getAllEmployees() {
     try {

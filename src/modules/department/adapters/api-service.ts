@@ -1,10 +1,12 @@
 import { camelCase } from 'change-case/keys';
+import { FULLSTACK_ASSESSMENT_API } from '@/config';
+
 import { DepartmentService } from '../domain/service';
 
 import { Department } from '../domain/definitions.d';
 
 export class DepartmentApiService implements DepartmentService {
-  basePath: string = process.env.FULLSTACK_ASSESSMENT_API!;
+  basePath: string = FULLSTACK_ASSESSMENT_API;
 
   async getAllDepartment() {
     try {
